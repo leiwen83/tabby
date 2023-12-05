@@ -1,3 +1,5 @@
+# syntax = docker/dockerfile:experimental
+
 ARG UBUNTU_VERSION=22.04
 # This needs to generally match the container host's environment.
 ARG CUDA_VERSION=11.7.1
@@ -9,7 +11,7 @@ ARG BASE_CUDA_RUN_CONTAINER=nvidia/cuda:${CUDA_VERSION}-runtime-ubuntu${UBUNTU_V
 FROM ${BASE_CUDA_DEV_CONTAINER} as build
 
 # Rust toolchain version
-ARG RUST_TOOLCHAIN=stable
+ARG RUST_TOOLCHAIN=1.73.0
 
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && \
